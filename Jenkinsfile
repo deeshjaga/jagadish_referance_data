@@ -16,7 +16,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-      checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'app-cirium-ticketsdatasynthesis-jenkins', url: 'https://github.com/LexisNexis-RBA/dsg-cirium-ticketsdatasynthesis-bts-reference.git']]])
+      checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'app-cirium-ticketsdatasynthesis-jenkins', url: 'https://github.com/LexisNexis-RBA/dsg-cirium-ticketsdatasynthesis-bts-reference.git']]])
       }     
     }    
 
