@@ -23,19 +23,19 @@ pipeline {
     stage('Build') {
       steps {
         sh '''
-          docker build -t $APP_NAME . -f ./Dockerfile
+          docker build -t $APP_NAME . --progress=plain -f ./Dockerfile 
 #        docker build -t ${DOCKER_REPO}/$APP_NAME:latest . -f ./Dockerfile
         '''
       }
     }
 
-    stage ('Trivy Scan') {
-      steps { 
-        sh 'docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v ${WORKSPACE}/trivy-reports:/output -e TRIVY_NEW_JSON_SCHEMA=true aquasec/trivy image --format json --timeout 15m0s --exit-code 0 --no-progress ${DOCKER_REPO}/${APP_NAME} | tee trivy.out'
-        recordIssues enabledForFailure: true, aggregatingResults: true
-//        recordIssues enabledForFailure: true, aggregatingResults: true, tool: trivy(pattern: "trivy.out")
-      } 
-    }
+//    stage ('Trivy Scan') {
+//      steps { 
+//        sh 'docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v ${WORKSPACE}/trivy-reports:/output -e TRIVY_NEW_JSON_SCHEMA=true aquasec/trivy image --format json --timeout 15m0s --exit-code 0 --no-progress ${DOCKER_REPO}/${APP_NAME} | tee trivy.out'
+//        recordIssues enabledForFailure: true, aggregatingResults: true
+////        recordIssues enabledForFailure: true, aggregatingResults: true, tool: trivy(pattern: "trivy.out")
+//      } 
+//    }
 
 //    stage('Publish') {
 //      steps {
