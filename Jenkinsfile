@@ -23,8 +23,10 @@ pipeline {
     stage('Build') {
       steps {
         sh '''
+          echo " building bts-reference"
           docker build -t $APP_NAME . --progress=plain -f ./Dockerfile 
 #        docker build -t ${DOCKER_REPO}/$APP_NAME:latest . -f ./Dockerfile
+          echon "build complete"
         '''
       }
     }
