@@ -35,7 +35,7 @@ RUN apt-get update && \
 WORKDIR /scratch/BTS_Referance_Data/
 COPY bts_reference_data_scraper.py .
 
-
-CMD ["python", "./bts_reference_data_scraper.py"]
+CMD ["/usr/bin/python3", "./bts_reference_data_scraper.py"]
+#CMD ["python", "./bts_reference_data_scraper.py"]
 ENTRYPOINT ["tail", "-f", "/dev/null"]
 
