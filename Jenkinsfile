@@ -39,7 +39,7 @@ pipeline {
 //      } 
 //    }
 
-    stage('Build') {
+    stage('Run') {
       steps {
         sh '''
           echo "running bts-reference"
