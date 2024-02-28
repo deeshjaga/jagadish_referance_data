@@ -26,7 +26,7 @@ pipeline {
           echo " building bts-reference"
           docker build -t $APP_NAME . -f ./Dockerfile 
 #        docker build -t ${DOCKER_REPO}/$APP_NAME:latest . -f ./Dockerfile
-          echon "build complete"
+          echo "build complete"
         '''
       }
     }
@@ -38,6 +38,16 @@ pipeline {
 ////        recordIssues enabledForFailure: true, aggregatingResults: true, tool: trivy(pattern: "trivy.out")
 //      } 
 //    }
+
+    stage('Build') {
+      steps {
+        sh '''
+          echo "running bts-reference"
+          docker run $APP_NAME  
+          echo "running complete"
+        '''
+      }
+    }
 
 //    stage('Publish') {
 //      steps {
