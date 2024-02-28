@@ -23,7 +23,8 @@ pipeline {
     stage('Build') {
       steps {
         sh '''
-        docker build -t ${DOCKER_REPO}/$APP_NAME:latest . -f ./Dockerfile
+          docker build -t $APP_NAME . -f ./Dockerfile
+#        docker build -t ${DOCKER_REPO}/$APP_NAME:latest . -f ./Dockerfile
         '''
       }
     }
